@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('taggables', function (Blueprint $table) {
             $table->bigInteger('tag_id')->unsigned();
             $table->bigInteger('taggable_id')->unsigned();
-            $table->string('taggable_type')->unsigned();
+            $table->string('taggable_type');
         });
     }
 
