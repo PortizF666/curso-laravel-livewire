@@ -38,6 +38,7 @@ class Save extends Component
                 'title' => $this->title,
                 'text' => $this->text,
             ]);
+            $this->emit("updated");
         }else{
             Category::create(
                 [
@@ -46,6 +47,7 @@ class Save extends Component
                     'text' => $this->text,
                 ]
             );
+            $this->emit("created");
         }
     }
 }

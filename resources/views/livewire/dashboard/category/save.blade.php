@@ -1,4 +1,13 @@
 <div>
+
+    <x-jet-action-message on="created">
+        {{ __('Categoria creada exitosamente') }}
+    </x-jet-action-message>
+
+    <x-jet-action-message on="updated">
+        {{ __('Categoria actualizada exitosamente') }}
+    </x-jet-action-message>
+
     <form wire:submit.prevent="submit">
         <x-jet-label for="">Titulo</x-jet-label>
     
