@@ -1,21 +1,17 @@
 <div>
     <form wire:submit.prevent="submit">
-        <label for=""/>Titulo</label>
+        <x-jet-label for="">Titulo</x-jet-label>
+    
+        <x-jet-input-error for="title"/>
+           
+        <x-jet-input type="text" wire:model="title"/>
 
-            @error('title')
-                {{ $message }}
-            @enderror
+        <x-jet-label for="">Texto</x-jet-label>
 
-        <input type="text" wire:model="title"/>
+        <x-jet-input-error for="message"/>
 
-        <label for=""/>Texto</label>
+        <x-jet-input type="text" wire:model="text"/>
 
-            @error('text')
-                {{ $message }}
-            @enderror
-
-        <input type="text" wire:model="text"/>
-
-        <button type="submit">Enviar</button>
+        <x-jet-button type="submit">Enviar</x-jet-button>
     </form>
 </div>
