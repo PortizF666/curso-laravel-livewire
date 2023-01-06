@@ -22,7 +22,16 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
+
+    Route::get('/', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    //CRUDS
+
+    Route::group(['prefix' => 'category'], function () {
+       Route::get('/', App\Http\Livewire\Dashboard\Category\Index::class);
+       Route::get('/create', App\Http\Livewire\Dashboard\Category\Save::class);
+       Route::get('/edit/{id}', App\Http\Livewire\Dashboard\Category\Save::class); 
+    });
 });
