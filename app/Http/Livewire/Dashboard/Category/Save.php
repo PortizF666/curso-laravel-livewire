@@ -5,16 +5,22 @@ namespace App\Http\Livewire\Dashboard\Category;
 use App\Models\Category;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+
 
 class Save extends Component
 {
+    use WithFileUploads;
+
     public $title;
     public $text;
+    public $image;
     public $category;
 
     protected $rules=[
       'title' => 'required|min:2|max:255',
-      'text' => 'nullable'
+      'text' => 'nullable',
+      'image' => 'nullable|image|max:1024'
     ];
 
     public function mount($id = null)
@@ -40,7 +46,7 @@ class Save extends Component
             ]);
             $this->emit("updated");
         }else{
-            Category::create(
+            $this->category = Category::create(
                 [
                     'title' => $this->title,
                     'slug' => str($this->title)->slug(),
@@ -48,6 +54,14 @@ class Save extends Component
                 ]
             );
             $this->emit("created");
+        }
+        //upload
+        if($this->image){
+            $imageName = $this->category->slug . '.'. $this->image->getClientOriginalExtension();
+            $this->image->storeAs('images', $imageName, 'public_upload');
+            $this->category->update([
+                'image'=> $imageName
+            ]);
         }
     }
 }

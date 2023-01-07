@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\URL;
 
 class Category extends Model
 {
@@ -13,4 +14,10 @@ class Category extends Model
     public function posts(){
         return $this->hasMany(Post::class);
     }
+
+    public function getImageURL(){
+        return URL::asset('app/public/images/'.$this->image);
+    }
+
 }
+
