@@ -34,4 +34,10 @@ Route::middleware([
        Route::get('/create', App\Http\Livewire\Dashboard\Category\Save::class)->name("d-category-create");
        Route::get('/edit/{id}', App\Http\Livewire\Dashboard\Category\Save::class)->name("d-category-edit"); 
     });
+
+    Route::group(['prefix' => 'post'], function () {
+        Route::get('/', App\Http\Livewire\Dashboard\Post\Index::class)->name("d-post-index");
+        Route::get('/create', App\Http\Livewire\Dashboard\Post\Save::class)->name("d-post-create");
+        Route::get('/edit/{id}', App\Http\Livewire\Dashboard\Post\Save::class)->name("d-post-edit"); 
+     });
 });
