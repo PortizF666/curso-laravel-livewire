@@ -13,7 +13,7 @@
         Listado
     @endslot
 
- <a class="btn-secondary" href="{{ route('d-post-create') }}" class="mr-2">CREAR</a>
+ <a class="btn-secondary mr-2" href="{{ route('d-post-create') }}">CREAR</a>
         <div class="grid grid-cols-2">
             <x-jet-input type="text" class="w-full mb-2" wire:model="search" placeholder="Buscar ...">Posted</x-jet-input>
             <div class="grid grid-cols-2 gap-2 ">

@@ -79,6 +79,7 @@ class Save extends Component
                     'category_id' => $this->category_id,
                     'posted' => $this->posted,
                     'text' => $this->text,
+                    //'tags' => $array(), //hay una tabla llamada taggables que une, tags con post
                 ]
             );
             $this->emit("created");
