@@ -44,4 +44,8 @@ Route::middleware([
     Route::group(['prefix' => 'contact'], function () {
         Route::get('/', App\Http\Livewire\Contact\General::class)->name("contact");
      });
+    Route::group(['prefix' => 'blog'], function () {
+        Route::get('/', App\Http\Livewire\Blog\Index::class)->name("web-index");
+        Route::get('/{slug}', App\Http\Livewire\Blog\Show::class)->name("web-show");
+    });
 });

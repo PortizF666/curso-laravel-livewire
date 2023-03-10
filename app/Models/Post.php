@@ -12,6 +12,9 @@ class Post extends Model
 
     protected $fillable=['title', 'slug', 'date', 'image', 'text', 'description', 'posted', 'type', 'category_id'];
 
+    protected $casts = [
+        'date' =>'datetime'
+    ];
     public function category(){
         return $this->belongsTo(Category::class);
     }
@@ -20,6 +23,11 @@ class Post extends Model
     }
 
     public function getImageURL(){
-        return URL::asset('app/public/images/post/'.$this->image);
+        if($this->image==null){
+            return URL::asset('app/public/images/post/image.jpg');
+        }else{
+            return URL::asset('app/public/images/post/'.$this->image);
+        }
+        
     }
 }

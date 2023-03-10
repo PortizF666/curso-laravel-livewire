@@ -23,6 +23,10 @@ class General extends Component
         'message' => 'required|min:2',
     ];
 
+    public function mount($subject = '#1 - '){
+        $this->subject = $subject;
+    }
+
     public function render()
     {
         //dd(ContactGeneral::find(1));
