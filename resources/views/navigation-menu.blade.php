@@ -15,11 +15,12 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    
                         <x-jet-dropdown align="left" width="60">
                             <x-slot name="trigger">
                                     <span class="inline-flex rounded-md">
                                         <x-jet-nav-link>
-                                            {{ __('Cateogorias') }}
+                                            {{ __('Categorías') }}
                                             <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                                             </svg>
@@ -57,13 +58,17 @@
                                 <div class="block px-4 py-2 text-xs text-gray-400">
                                     {{ __('Manage CRUDS') }}
                                 </div>
-
                                 <x-jet-dropdown-link href="{{ route('d-post-index') }}">
+                                    {{ __('All Post') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('d-post-create') }}">
+                                    {{ __('Create Post') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('d-category-index') }}">
                                     {{ __('Category') }}
                                 </x-jet-dropdown-link>
                             </x-slot>
                         </x-jet-dropdown>   
-                    
                 </div>
 
             </div>
@@ -191,7 +196,12 @@
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
         </div>
-
+        <x-jet-responsive-nav-link href="{{ route('d-post-index')}}" :active="request()->routeIs('d-post-index')">
+            {{ __('All Post') }}
+        </x-jet-responsive-nav-link>
+        <x-jet-responsive-nav-link href="{{ route('d-post-create')}}" :active="request()->routeIs('d-post-create')">
+            {{ __('Create Post') }}
+        </x-jet-responsive-nav-link>
         <x-jet-responsive-nav-link href="{{ route('d-category-index')}}" :active="request()->routeIs('d-category-index')">
                 {{ __('Category') }}
         </x-jet-responsive-nav-link>

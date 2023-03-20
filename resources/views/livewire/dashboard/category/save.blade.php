@@ -31,6 +31,14 @@
             </div>
 
             <div class="col-span-6 sm:col-span-4">
+               <div wire:ignore>
+                    <div id="ckcontent">
+                        {!! $text !!}
+                    </div>
+               </div>
+            </div>
+
+            <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="">Texto</x-jet-label>
                 <x-jet-input-error for="message"/>
                 <x-jet-input type="text" class="block w-full" wire:model="text"/>
@@ -52,3 +60,25 @@
         @endslot
     </x-jet-form-section>
 </div>
+<script src='{{asset('js/ckeditor/ckeditor.js')}}'></script>
+<script>
+
+  document.addEventListener('livewire:load', function(){
+        let ckeditor = null;
+        let editor = ClassicEditor.create(document.querySelector('#ckcontent')).then(
+        editor=>{
+            ckeditor = editor
+            editor.model.document.on('change:data', () =>{
+                @this.text = editor.getData();
+            });
+        }
+    );
+
+     /*Comunicacion CK EDitor - propiedad*/
+     Livewire.hook('message.processed', (message, component) =>{
+            if(message.updateQueue[0].name == "text"){
+                ckeditor.setData(@this.text)
+            }
+        })
+  });
+</script>

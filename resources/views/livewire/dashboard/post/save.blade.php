@@ -74,8 +74,8 @@
                 <x-jet-input-error for="category_id"/>
                 <select class="block w-full" wire:model="category_id">
                     <option value=""></option>
-                    @foreach ($categorias as $categoria)
-                        <option value="{{$categoria->id}}">{{$categoria->title}}</option>
+                    @foreach ($categories as $category)
+                        <option value="{{$category->id}}">{{$category->title}}</option>
                     @endforeach
                 </select>
             </div>
@@ -92,7 +92,7 @@
         @endslot
 
         @slot('actions')
-            <x-jet-button type="submit">Enviar</x-jet-button>
+            <x-jet-button type="submit">Guardar</x-jet-button>
         @endslot
     </x-jet-form-section>
 </div>
